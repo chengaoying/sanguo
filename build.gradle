@@ -1,0 +1,22 @@
+ext.jmeArchivesBaseName = 'NewSanguo'
+
+configurations {
+    refProvide
+    compile.extendsFrom(refProvide)
+}
+
+repositories {
+    maven {
+        credentials {
+            username 'deployment'
+            password '123456'
+        }
+        url 'http://localhost:8000/nexus/content/groups/public/'
+    }
+}
+
+dependencies {
+    refProvide 'ohyeah:itvgame-client:1.0.0-SNAPSHOT'
+}
+
+apply from: "${System.getenv().IGBT_HOME}/build.gradle"

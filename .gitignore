@@ -1,0 +1,14 @@
+/classes
+/out
+/bin
+/build
+/.idea
+/.gradle
+*.iml
+*.ipr
+*.iws
+/.settings
+/.project
+/.classpath
+/.mtj*
+/Application Descriptor
