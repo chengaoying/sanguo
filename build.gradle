@@ -4,7 +4,6 @@ configurations {
     refProvide
     compile.extendsFrom(refProvide)
 }
-
 repositories {
     maven {
         credentials {
@@ -20,3 +19,4 @@ dependencies {
 }
 
 apply from: "${System.getenv().IGBT_HOME}/build.gradle"
+
