@@ -3,7 +3,6 @@ package sanguo;
 import java.io.IOException;
 
 import javax.microedition.lcdui.Font;
-import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 
 import cn.ohyeah.itvgame.model.GameRecord;
@@ -12,6 +11,7 @@ import cn.ohyeah.stb.ui.DrawUtil;
 import cn.ohyeah.stb.ui.PopupConfirm;
 import cn.ohyeah.stb.ui.PopupText;
 import cn.ohyeah.stb.ui.ImageUtil;
+import cn.ohyeah.stb.game.SGraphics;
 import cn.ohyeah.stb.game.ServiceWrapper;
 import cn.ohyeah.stb.key.KeyCode;
 import cn.ohyeah.stb.key.KeyState;
@@ -174,7 +174,7 @@ public class StateRecord {
 					if (recordList[curRecId]!=null && recordList[curRecId].isValid()) {
 						PopupText pt = Resource.buildPopupTextWithoutBtn();
 						pt.setText("正在读取存档......");
-						pt.show(engine.getGraphics());
+						pt.show(engine.getSGraphics());
 						engine.flushGraphics();
 						loadRecord(curRecId);
 					}
@@ -191,7 +191,7 @@ public class StateRecord {
 					if (isSave) {
 						PopupText pt = Resource.buildPopupTextWithoutBtn();
 						pt.setText("正在保存存档......");
-						pt.show(engine.getGraphics());
+						pt.show(engine.getSGraphics());
 						engine.flushGraphics();
 						saveRecord(curRecId);
 					}
@@ -210,7 +210,7 @@ public class StateRecord {
 		}
 	}
 
-	public void show(Graphics g) {
+	public void show(SGraphics g) {
 		switch(state) {
 		case STATE_FETCH: 
 			showFetch(g);
@@ -233,7 +233,7 @@ public class StateRecord {
 		return smallSeigneurHead[seigneurId];
 	}
 	
-	private void showRecordBg(Graphics g) {
+	private void showRecordBg(SGraphics g) {
 		Image title = null;
 		if (type == TYPE_LOAD) {
 			title = Resource.loadImage(Resource.PIC_ID_RECORD_LOAD_TITLE);
@@ -260,7 +260,7 @@ public class StateRecord {
 		g.drawRegion(body, 0, bodyH-(bodyH>>1), body.getWidth(), bodyH>>1, 0, bodyX, bodyY, 20);
 	}
 	
-	private void showReocrdItems(Graphics g) {
+	private void showReocrdItems(SGraphics g) {
 		int bgX = Resource.X_RECORD_BG;
 		int bgY = Resource.Y_RECORD_BG;
 		Image title = null;
@@ -371,12 +371,12 @@ public class StateRecord {
 		}
 	}
 
-	private void showList(Graphics g) {
+	private void showList(SGraphics g) {
 		showRecordBg(g);
 		showReocrdItems(g);
 	}
 
-	private void showFetch(Graphics g) {
+	private void showFetch(SGraphics g) {
 		showRecordBg(g);
 		String info = "正在读取存档，请稍后......";
 		PopupText pt = Resource.buildPopupTextWithoutBtn();
@@ -439,7 +439,7 @@ public class StateRecord {
 		result = -1;
 		back = false;
 		this.type = (byte)type;
-		Graphics g = engine.getGraphics();
+		SGraphics g = engine.getSGraphics();
 		KeyState KeyState = engine.getKeyState();
 		boolean run = true;
 		try {

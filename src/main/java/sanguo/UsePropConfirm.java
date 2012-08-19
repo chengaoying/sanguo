@@ -1,10 +1,10 @@
 package sanguo;
 
 import javax.microedition.lcdui.Font;
-import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 
 import cn.ohyeah.stb.game.EngineService;
+import cn.ohyeah.stb.game.SGraphics;
 import cn.ohyeah.stb.game.ServiceWrapper;
 import cn.ohyeah.stb.game.StateRecharge;
 import cn.ohyeah.stb.ui.DrawUtil;
@@ -71,7 +71,7 @@ public class UsePropConfirm {
 		++propCount;
 	}
 	
-	public void show(Graphics g) {
+	public void show(SGraphics g) {
 		Image bg = Resource.loadImage(Resource.PIC_ID_USE_PROP_BG);
 		int bgX = (engine.getScreenWidth()-bg.getWidth())>>1;
 		int bgY = (engine.getScreenHeight()-bg.getHeight())>>1;

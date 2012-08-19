@@ -734,8 +734,8 @@ public class Rule {
 			}
 			tipText = "战争结束\n我军胜利\n"+src.getSeigneur().getName()+"军从"+target.getName()+"撤退";
 		}
-		engine.getGraphics().setColor(0);
-		engine.getGraphics().fillRect(0, 0, engine.getScreenWidth(), engine.getScreenHeight());
+		engine.getSGraphics().setColor(0);
+		engine.getSGraphics().fillRect(0, 0, engine.getScreenWidth(), engine.getScreenHeight());
 		PopupText pt = Resource.buildPopupText();
 		pt.setText(tipText);
 		pt.popup();
@@ -1172,8 +1172,8 @@ public class Rule {
 			targetGeneral.setIdentityNormal();
 			targetGeneral.setSeigneur(target.getSeigneur());
 			//engine.generalList[targetSeigneur.getGeneralId()].setSeigneur(target.getSeigneur());
-			engine.getGraphics().setColor(0);
-			engine.getGraphics().fillRect(0, 0, engine.getScreenWidth(), engine.getScreenHeight());
+			engine.getSGraphics().setColor(0);
+			engine.getSGraphics().fillRect(0, 0, engine.getScreenWidth(), engine.getScreenHeight());
 			PopupText pt = Resource.buildPopupText();
 			pt.setText(targetSeigneur.getName()+"灭亡了");
 			pt.setWaitMillisSeconds(3000);

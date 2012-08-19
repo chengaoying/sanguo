@@ -1,7 +1,6 @@
 package sanguo;
 
-import javax.microedition.lcdui.Graphics;
-
+import cn.ohyeah.stb.game.SGraphics;
 import cn.ohyeah.stb.ui.RegularSprite;
 
 public class SoldierSprite extends RegularSprite {
@@ -144,7 +143,7 @@ public class SoldierSprite extends RegularSprite {
 		return isRetreat()||(!isAttack()&&isRetreatAction());
 	}
 	
-	public void show(Graphics g) {
+	public void show(SGraphics g) {
 		if (state != STATE_DISAPPEAR) {
 			int correctY = Resource.PIC_CORRECTION_SOLDIERS_ATTACK[soldier.getId()][1];
 			if (state == STATE_ATTACK) {
