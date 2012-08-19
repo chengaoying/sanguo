@@ -10,7 +10,7 @@ repositories {
             username 'deployment'
             password '123456'
         }
-        url 'http://localhost:8000/nexus/content/groups/public/'
+        url 'http://192.168.16.70:8000/nexus/content/groups/public/'
     }
 }
 
