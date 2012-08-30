@@ -1,7 +1,6 @@
 package sanguo;
 
 import javax.microedition.lcdui.Font;
-import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 
 import cn.ohyeah.stb.ui.ISprite;
@@ -14,6 +13,7 @@ import cn.ohyeah.stb.ui.ScrollBar;
 import cn.ohyeah.stb.ui.TextBox;
 import cn.ohyeah.stb.ui.TextView;
 import cn.ohyeah.stb.ui.VerticalListMenu;
+import cn.ohyeah.stb.game.SGraphics;
 import cn.ohyeah.stb.key.KeyCode;
 import cn.ohyeah.stb.key.KeyState;
 import cn.ohyeah.stb.util.Wait;
@@ -1365,8 +1365,8 @@ public class StateMap {
 			else {
 				tipText = "战争结束\n我军战败, 从"+target.getName()+"退回"+src.getName();
 			}
-			engine.getGraphics().setColor(0);
-			engine.getGraphics().fillRect(0, 0, engine.getScreenWidth(), engine.getScreenHeight());
+			engine.getSGraphics().setColor(0);
+			engine.getSGraphics().fillRect(0, 0, engine.getScreenWidth(), engine.getScreenHeight());
 			pt.setText(tipText);
 			pt.popup();
 			
@@ -1415,8 +1415,8 @@ public class StateMap {
 			
 			Rule.captureEmptyCity(attackList, target);
 			
-			engine.getGraphics().setColor(0);
-			engine.getGraphics().fillRect(0, 0, engine.getScreenWidth(), engine.getScreenHeight());
+			engine.getSGraphics().setColor(0);
+			engine.getSGraphics().fillRect(0, 0, engine.getScreenWidth(), engine.getScreenHeight());
 			pt.setText("我军成功占领"+target.getName());
 			pt.popup();
 			
@@ -1815,7 +1815,7 @@ public class StateMap {
 		soldierCount = null;
 	}
 	
-	private void showGeneralListUI(Graphics g) {
+	private void showGeneralListUI(SGraphics g) {
 		generalListUI.show(g);
 	}
 
@@ -2534,7 +2534,7 @@ public class StateMap {
 		}
 	}
 	
-	public void show(Graphics g) {
+	public void show(SGraphics g) {
 		switch(state) {
 		case STATE_START:
 			showStart(g);
@@ -2728,16 +2728,16 @@ public class StateMap {
 		}
 	}
 	
-	private void showGifts(Graphics g) {
+	private void showGifts(SGraphics g) {
 		showNormal(g);
 	}
 
-	private void showStart(Graphics g) {
+	private void showStart(SGraphics g) {
 		showNormal(g);
 		showSlideWindow(g);
 	}
 
-	void showSlideWindow(Graphics g) {
+	void showSlideWindow(SGraphics g) {
 		int scrW = engine.getScreenWidth();
 		int scrH = engine.getScreenHeight();
 		int lastFrame = 16;
@@ -2830,7 +2830,7 @@ public class StateMap {
 		return index;
 	}
 	
-	public void showCommonMapBgInfo(Graphics g) {
+	public void showCommonMapBgInfo(SGraphics g) {
 		//画背景图片
 		g.drawImage(Resource.loadImage(Resource.PIC_ID_MAP_TOP_BG), 0, 0, 20);
 		g.drawImage(Resource.loadImage(Resource.PIC_ID_MAP_BG), 0, 81, 20);
@@ -2842,12 +2842,12 @@ public class StateMap {
 		Resource.freeImage(Resource.PIC_ID_MAP_BG);
 	}
 
-	private void showTransferTarget(Graphics g) {
+	private void showTransferTarget(SGraphics g) {
 		showMapBg(g);
 		showMapTopInfo(g);
 	}
 
-	private void showMilitaryTransfer(Graphics g) {
+	private void showMilitaryTransfer(SGraphics g) {
 		Image tbg = Resource.loadImage(Resource.PIC_ID_TRANSFER_BG);
 		int bgX = (engine.getScreenWidth()-tbg.getWidth())>>1;
 		int bgY = (engine.getScreenHeight()-tbg.getHeight())>>1;
@@ -2945,7 +2945,7 @@ public class StateMap {
 		}
 	}
 
-	private void showGrainTrade(Graphics g) {
+	private void showGrainTrade(SGraphics g) {
 		Image tradeBg = Resource.loadImage(Resource.PIC_ID_TRADE_BG);
 		int bgX = (engine.getScreenWidth()-tradeBg.getWidth())>>1;
 		int bgY = (engine.getScreenHeight()-tradeBg.getHeight())>>1;
@@ -3040,13 +3040,13 @@ public class StateMap {
 		}
 	}
 
-	private void showGameMenu(Graphics g) {
+	private void showGameMenu(SGraphics g) {
 		showMapBg(g);
 		showMapTopInfo(g);
 		showGameMenuList(g);
 	}
 
-	private void showGameMenuList(Graphics g) {
+	private void showGameMenuList(SGraphics g) {
 		int sx = (engine.getScreenWidth()-Resource.W_CITY_SUB_MENU_BG)>>1;
 		int sy = 200+2;
 		Font font = g.getFont();
@@ -3071,13 +3071,13 @@ public class StateMap {
 		}
 	}
 
-	private void showDistributeDetail(Graphics g) {
+	private void showDistributeDetail(SGraphics g) {
 		showMapBg(g);
 		showMapTopInfo(g);
 		showDistributeInfo(g);
 	}
 
-	private void showDistributeInfo(Graphics g) {
+	private void showDistributeInfo(SGraphics g) {
 		Image disBg = Resource.loadImage(Resource.PIC_ID_DISTRIBUTE_BG);
 		int bgX = (engine.getScreenWidth()-disBg.getWidth())>>1;
 		int bgY = (engine.getScreenHeight()-disBg.getHeight())>>1;
@@ -3190,13 +3190,13 @@ public class StateMap {
 		}
 	}
 
-	private void showRoundEnd(Graphics g) {
+	private void showRoundEnd(SGraphics g) {
 		showMapBg(g);
 		showMapTopInfo(g);
 		showRoundInfo(g);
 	}
 
-	private void showRoundInfo(Graphics g) {
+	private void showRoundInfo(SGraphics g) {
 		int waitCursorW = 74;
 		int waitCursorH = 74;
 		Image wait = Resource.loadImage(Resource.PIC_ID_WAIT);
@@ -3244,20 +3244,20 @@ public class StateMap {
 		}
 	}
 
-	private void showGeneralMoveTarge(Graphics g) {
+	private void showGeneralMoveTarge(SGraphics g) {
 		showMapBg(g);
 		showMapTopInfo(g);
 	}
 
-	private void showDevelopRelief(Graphics g) {
+	private void showDevelopRelief(SGraphics g) {
 		showGeneralListUI(g);
 	}
 
-	private void showDevelopCommerce(Graphics g) {
+	private void showDevelopCommerce(SGraphics g) {
 		showGeneralListUI(g);
 	}
 
-	private void showGeneralAward(Graphics g) {
+	private void showGeneralAward(SGraphics g) {
 		//showMapTop(g);
 		if (engine.isDebugMode()) {
 			engine.addDebugUserMessage("1:武+10; 2:智+10; 3:魅+10; 4:技+10; 5:体加满; 6:兵加满");
@@ -3466,28 +3466,28 @@ public class StateMap {
 		}
 	}
 
-	private void showExpeditionTarget(Graphics g) {
+	private void showExpeditionTarget(SGraphics g) {
 		showMapBg(g);
 		showMapTopInfo(g);
 	}
 
-	private void showGeneralMove(Graphics g) {
+	private void showGeneralMove(SGraphics g) {
 		showGeneralListUI(g);
 	}
 
-	private void showGeneralConvalesce(Graphics g) {
+	private void showGeneralConvalesce(SGraphics g) {
 		showGeneralListUI(g);
 	}
 
-	private void showGeneralSearch(Graphics g) {
+	private void showGeneralSearch(SGraphics g) {
 		showGeneralListUI(g);
 	}
 
-	private void showMilitartAffairsDistribute(Graphics g) {
+	private void showMilitartAffairsDistribute(SGraphics g) {
 		showGeneralListUI(g);
 	}
 
-	private void showMilitartAffairsDraft(Graphics g) {
+	private void showMilitartAffairsDraft(SGraphics g) {
 		Image draftBg = Resource.loadImage(Resource.PIC_ID_DRAFT_BG);
 		int bgX = (engine.getScreenWidth()-draftBg.getWidth())>>1;
 		int bgY = (engine.getScreenHeight()-draftBg.getHeight())>>1;
@@ -3577,41 +3577,41 @@ public class StateMap {
 		
 	}
 
-	private void showMilitartAffairsExpedition(Graphics g) {
+	private void showMilitartAffairsExpedition(SGraphics g) {
 		//showMapBg(g);
 		//showMapTopInfo(g);
 		showGeneralListUI(g);
 	}
 
-	private void showDevelopFarming(Graphics g) {
+	private void showDevelopFarming(SGraphics g) {
 		showGeneralListUI(g);
 	}
 
-	private void showMarket(Graphics g) {
+	private void showMarket(SGraphics g) {
 		showMapBg(g);
 		showMapTopInfo(g);
 		showCitySubMenu(g);
 	}
 
-	private void showGeneral(Graphics g) {
+	private void showGeneral(SGraphics g) {
 		showMapBg(g);
 		showMapTopInfo(g);
 		showCitySubMenu(g);
 	}
 
-	private void showMilitaryAffairs(Graphics g) {
+	private void showMilitaryAffairs(SGraphics g) {
 		showMapBg(g);
 		showMapTopInfo(g);
 		showCitySubMenu(g);
 	}
 
-	private void showDevelop(Graphics g) {
+	private void showDevelop(SGraphics g) {
 		showMapBg(g);
 		showMapTopInfo(g);
 		showCitySubMenu(g);
 	}
 
-	private void showCitySubMenu(Graphics g) {
+	private void showCitySubMenu(SGraphics g) {
 		int sx = 0, sy = 0;
 		Image menuBg = Resource.loadImage(Resource.PIC_ID_CITY_MENU_BG);
 
@@ -3653,7 +3653,7 @@ public class StateMap {
 		g.drawString(helpText, sx, sy, 20);
 	}
 
-	private void showCity(Graphics g) {
+	private void showCity(SGraphics g) {
 		if (engine.isDebugMode()) {
 			engine.addDebugUserMessage("1:金+1000; 2:粮+1000; 3:农+100; 4:商+100; 5:人+100; 6:忠+100");
 		}
@@ -3663,7 +3663,7 @@ public class StateMap {
 		showCityIntro(g);
 	}
 
-	private void showCityIntro(Graphics g) {
+	private void showCityIntro(SGraphics g) {
 		Image introBg = Resource.loadImage(Resource.PIC_ID_CITY_INTRO_BG);
 		int bgX = 307-20;
 		int bgY = 171;
@@ -3745,7 +3745,7 @@ public class StateMap {
 		
 	}
 
-	private void showCityMenu(Graphics g) {
+	private void showCityMenu(SGraphics g) {
 		int sx = 0, sy = 0;
 		Font font = g.getFont();
 		Image menuBg = Resource.loadImage(Resource.PIC_ID_CITY_MENU_BG);
@@ -3770,13 +3770,13 @@ public class StateMap {
 		}
 	}
 
-	private void showSystem(Graphics g) {
+	private void showSystem(SGraphics g) {
 		showMapBg(g);
 		showMapTopInfo(g);
 		showSystemMenu(g);
 	}
 
-	private void showSystemMenu(Graphics g) {
+	private void showSystemMenu(SGraphics g) {
 		systemMenu.show(g);
 	}
 	
@@ -3786,7 +3786,7 @@ public class StateMap {
 		systemMenu.setItemsCoordinate(Resource.POS_SYSTEM_MENU);
 	}
 	
-	private void showMapBg(Graphics g) {
+	private void showMapBg(SGraphics g) {
 		//画背景图片
 		g.drawImage(Resource.loadImage(Resource.PIC_ID_MAP_BG), 0, 81, 20);
 		//画旗帜
@@ -3796,7 +3796,7 @@ public class StateMap {
 	}
 	
 	
-	private void drawResStatusIcon(Graphics g) {
+	private void drawResStatusIcon(SGraphics g) {
 		City city = engine.cityList[curCityId];
 		if (city.belongToPlayer()) {
 			Image icon = null;
@@ -3842,14 +3842,14 @@ public class StateMap {
 		}
 	}
 
-	private void drawCursor(Graphics g) {
+	private void drawCursor(SGraphics g) {
 		if (cityCursor == null) {
 			cityCursor = Resource.buildRotateCursor();
 		}
 		cityCursor.show(g, Resource.LAYOUT_CITY[curCityId][0]+4, Resource.LAYOUT_CITY[curCityId][1]-8);
 	}
 
-	private void drawFlag(Graphics g) {
+	private void drawFlag(SGraphics g) {
 		Image flag = Resource.loadImage(Resource.PIC_ID_SEIGNEUR_FLAG);
 		int flagSequence;
 		if (flagFrame >= (NUM_FLAG_SEQUENCES>>1)) {
@@ -3883,7 +3883,7 @@ public class StateMap {
 		}
 	}
 
-	private void showMapTopInfo(Graphics g) {
+	private void showMapTopInfo(SGraphics g) {
 		//显示君主头像
 		g.drawImage(Resource.loadImage(Resource.PIC_ID_MAP_TOP_BG), 0, 0, 20);
 		Image head = Resource.loadImage(Resource.PIC_ID_SEIGNEUR_HEAD);
@@ -4018,13 +4018,13 @@ public class StateMap {
 		drawResStatusIcon(g);
 	}
 	
-	public void showMapTop(Graphics g) {
+	public void showMapTop(SGraphics g) {
 		//画背景图片
 		g.drawImage(Resource.loadImage(Resource.PIC_ID_MAP_TOP_BG), 0, 0, 20);
 		showMapTopInfo(g);
 	}
 
-	private void showNormal(Graphics g) {
+	private void showNormal(SGraphics g) {
 		if (engine.isDebugMode()) {
 			engine.addDebugUserMessage("1:胜利; 2:失败");
 		}
@@ -4234,7 +4234,7 @@ public class StateMap {
 	}
 	
 	/*
-	private void drawNumber(Graphics g, int num, int x, int y, int gap) {
+	private void drawNumber(SGraphics g, int num, int x, int y, int gap) {
 		Image img = Resource.loadImage(Resource.PIC_ID_NUMBER);
 		int imgW = 13;
 		int imgH = 17;
@@ -4394,15 +4394,15 @@ public class StateMap {
 						}
 						Image img = Resource.loadImage(Resource.PIC_ID_NUMBER);
 						/*显示金币增长*/
-						engine.getGraphics().drawRegion(res, resW, 0, resW, resH, 0, sx, sy, 20);
+						engine.getSGraphics().drawRegion(res, resW, 0, resW, resH, 0, sx, sy, 20);
 						if (resourcePaintFrame >= 2) {
-							DrawUtil.drawNumberWithSymbol(engine.getGraphics(), img, cache[i], sx+resW, sy, 1);
+							DrawUtil.drawNumberWithSymbol(engine.getSGraphics(), img, cache[i], sx+resW, sy, 1);
 						}
 						sy += 20;
 						/*粮草金币增长*/
-						engine.getGraphics().drawRegion(res, 0, 0, resW, resH, 0, sx, sy, 20);
+						engine.getSGraphics().drawRegion(res, 0, 0, resW, resH, 0, sx, sy, 20);
 						if (resourcePaintFrame >= 2) {
-							DrawUtil.drawNumberWithSymbol(engine.getGraphics(), img, cache[len2+i], sx+resW, sy, 1);
+							DrawUtil.drawNumberWithSymbol(engine.getSGraphics(), img, cache[len2+i], sx+resW, sy, 1);
 						}
 					}
 				}
@@ -4481,7 +4481,7 @@ public class StateMap {
 	}
 	
 	private void winGame() {
-		Graphics g = engine.getGraphics();
+		SGraphics g = engine.getSGraphics();
 		Image win = Resource.loadImage(Resource.PIC_ID_WIN);
 		g.drawImage(win, 0, 0, 20);
 		

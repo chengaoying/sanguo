@@ -1,10 +1,10 @@
 package sanguo;
 
 import javax.microedition.lcdui.Font;
-import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 
 import cn.ohyeah.stb.game.EngineService;
+import cn.ohyeah.stb.game.SGraphics;
 import cn.ohyeah.stb.game.ServiceWrapper;
 import cn.ohyeah.stb.game.StateRecharge;
 import cn.ohyeah.stb.ui.PopupConfirm;
@@ -215,7 +215,7 @@ public class StateMarket {
 							if (confirm.popup() == 0) {
 								StateRecharge recharge = new StateRecharge(engine);
 								recharge.recharge();
-								engine.stateMap.showCommonMapBgInfo(engine.getGraphics());
+								engine.stateMap.showCommonMapBgInfo(engine.getSGraphics());
 								engine.stateMap.clearCommonMapBgRes();
 							}
 						}
@@ -256,7 +256,7 @@ public class StateMarket {
 					if (engineService.isSupportRecharge()) {
 						StateRecharge recharge = new StateRecharge(engine);
 						recharge.recharge();
-						engine.stateMap.showCommonMapBgInfo(engine.getGraphics());
+						engine.stateMap.showCommonMapBgInfo(engine.getSGraphics());
 						engine.stateMap.clearCommonMapBgRes();
 					}
 					else {
@@ -304,7 +304,7 @@ public class StateMarket {
 		return order;
 	}
 
-	public void show(Graphics g) {
+	public void show(SGraphics g) {
 		switch (state) {
 		case STATE_START:
 			showMarket(g);
@@ -317,7 +317,7 @@ public class StateMarket {
 		}
 	}
 
-	private void showMarket(Graphics g) {
+	private void showMarket(SGraphics g) {
 		Image marketBg = Resource.loadImage(Resource.PIC_ID_MARKET_BG);
 		int bgX = (engine.getScreenWidth()-marketBg.getWidth())>>1;
 		int bgY = (engine.getScreenHeight()-marketBg.getHeight())>>1;
@@ -541,7 +541,7 @@ public class StateMarket {
 	public void popup() {
 		back = false;
 		this.type = (byte)type;
-		Graphics g = engine.getGraphics();
+		SGraphics g = engine.getSGraphics();
 		KeyState KeyState = engine.getKeyState();
 		boolean run = true;
 		try {

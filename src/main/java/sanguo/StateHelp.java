@@ -1,10 +1,10 @@
 package sanguo;
 
-import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 
 import cn.ohyeah.stb.ui.DrawUtil;
 import cn.ohyeah.stb.ui.TextView;
+import cn.ohyeah.stb.game.SGraphics;
 import cn.ohyeah.stb.key.KeyCode;
 import cn.ohyeah.stb.key.KeyState;
 
@@ -49,7 +49,7 @@ public class StateHelp {
 		}
 	}
 	
-	private void showHelp(Graphics g) {
+	private void showHelp(SGraphics g) {
 		Image helpBg = Resource.loadImage(Resource.PIC_ID_HELP_BG);
 		g.drawImage(helpBg, 0, 0, 20);
 		
@@ -70,7 +70,7 @@ public class StateHelp {
 		running = true;
 		try {
 			KeyState KeyState = engine.getKeyState();
-			Graphics g = engine.getGraphics();
+			SGraphics g = engine.getSGraphics();
 			while (running) {
 				handleHelp(KeyState);
 				if (running) {

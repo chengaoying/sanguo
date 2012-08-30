@@ -1,7 +1,6 @@
 package sanguo;
 
 import javax.microedition.lcdui.Font;
-import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 import javax.microedition.lcdui.game.Sprite;
 
@@ -10,6 +9,7 @@ import cn.ohyeah.stb.ui.PopupConfirm;
 import cn.ohyeah.stb.ui.PopupText;
 import cn.ohyeah.stb.ui.ImageUtil;
 import cn.ohyeah.stb.ui.ScrollBar;
+import cn.ohyeah.stb.game.SGraphics;
 import cn.ohyeah.stb.key.KeyCode;
 import cn.ohyeah.stb.key.KeyState;
 import cn.ohyeah.stb.util.RandomValue;
@@ -546,7 +546,7 @@ public class StateBattle {
 		return sprites;
 	}
 
-	public void show(Graphics g) {
+	public void show(SGraphics g) {
 		switch (state) {
 		case STATE_FIGHTER_LIST: 
 			showFighterList(g);
@@ -565,7 +565,7 @@ public class StateBattle {
 		}
 	}
 
-	private void showFightMenu(Graphics g) {
+	private void showFightMenu(SGraphics g) {
 		Image menuBg = Resource.loadImage(Resource.PIC_ID_FIGHT_MENU_BG);
 		int bgX = (engine.getScreenWidth()-menuBg.getWidth())>>1;
 		int bgY = (engine.getScreenHeight()-menuBg.getHeight())>>1;
@@ -643,7 +643,7 @@ public class StateBattle {
 		qsortSoldier(list, 0, list.length-1);
 	}
 	
-	private void showCdProgress(Graphics g) {
+	private void showCdProgress(SGraphics g) {
 		Image cdBg = Resource.loadImage(Resource.PIC_ID_CD_BG);
 		Image cdProgress = Resource.loadImage(Resource.PIC_ID_CD_PROGRESS);
 		int cdBgW = 222;
@@ -678,7 +678,7 @@ public class StateBattle {
 		}
 	}
 	
-	private void showBattleField(Graphics g) {
+	private void showBattleField(SGraphics g) {
 		Image battleBg = Resource.loadImage(Resource.PIC_ID_BATTLE_FILED_BG);
 		g.drawImage(battleBg, 0, 0, 20);
 		
@@ -749,7 +749,7 @@ public class StateBattle {
 		}
 	}
 
-	private void showMagicStar(Graphics g) {
+	private void showMagicStar(SGraphics g) {
 		Image star = Resource.loadImage(Resource.PIC_ID_MAGIC_STAR);
 		Image grayStar = Resource.getImage(Resource.PIC_ID_MAGIC_STAR_VALID);
 		if (grayStar == null) {
@@ -800,7 +800,7 @@ public class StateBattle {
 		}
 	}
 
-	private void showFighterList(Graphics g) {
+	private void showFighterList(SGraphics g) {
 		/*ÏÔÊ¾Õ½¶·±³¾°*/
 		Image battleBg = Resource.loadImage(Resource.PIC_ID_BATTLE_FILED_BG);
 		g.drawImage(battleBg, 0, 0, 20);
@@ -862,7 +862,7 @@ public class StateBattle {
 		showFightBtn(g);
 	}
 	
-	private void showFightBtn(Graphics g) {
+	private void showFightBtn(SGraphics g) {
 		Font font = engine.getFont();
 		Image btnBg = Resource.loadImage(Resource.PIC_ID_BATTLE_BTN_BG);
 		int btnW = btnBg.getWidth();
@@ -896,7 +896,7 @@ public class StateBattle {
 		
 	}
 	
-	private void showDefenseFighterList(Graphics g, Image listBg, Image generalBg, Image armyBg, Image titleBg) {
+	private void showDefenseFighterList(SGraphics g, Image listBg, Image generalBg, Image armyBg, Image titleBg) {
 		Font font = engine.getFont();
 		int deltaH = (Resource.H_BATTLE_FIELD_ARMY_INFO-font.getHeight())>>1;
 		int num = 0;
@@ -1009,7 +1009,7 @@ public class StateBattle {
 				sx, sy, 20);
 	}
 	
-	private void showAttackFighterList(Graphics g, Image listBg, Image generalBg, Image armyBg, Image titleBg) {
+	private void showAttackFighterList(SGraphics g, Image listBg, Image generalBg, Image armyBg, Image titleBg) {
 		Font font = engine.getFont();
 		int deltaH = (Resource.H_BATTLE_FIELD_ARMY_INFO-font.getHeight())>>1;
 		int num = 0;
@@ -1123,7 +1123,7 @@ public class StateBattle {
 				sx, sy, 20);
 	}
 	
-	private void showBattleFieldInfo(Graphics g, short[][]pos, String attack, String defense, String soldiers, String name) {
+	private void showBattleFieldInfo(SGraphics g, short[][]pos, String attack, String defense, String soldiers, String name) {
 		Font font = engine.getFont();
 		int deltaH = (Resource.H_BATTLE_FIELD_ARMY_INFO-font.getHeight())>>1;
 		int num = 0;
@@ -1581,7 +1581,7 @@ public class StateBattle {
 	}
 	
 	public int battle() {
-		Graphics g = engine.getGraphics();
+		SGraphics g = engine.getSGraphics();
 		KeyState key = engine.getKeyState();
 		run = true;
 		defenseIndex = (byte)getAttackFighter(defenseList);

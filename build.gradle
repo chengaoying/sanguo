@@ -10,12 +10,12 @@ repositories {
             username 'deployment'
             password '123456'
         }
-        url 'http://localhost:8000/nexus/content/groups/public/'
+        url 'http://192.168.16.30:8000/nexus/content/groups/public/'
     }
 }
 
 dependencies {
-    refProvide 'ohyeah:itvgame-common:1.2.0.1'
+    refProvide 'ohyeah:itvgame-common:1.2.4.1'
 }
 
 apply from: "${System.getenv().IGBT_HOME}/build.gradle"

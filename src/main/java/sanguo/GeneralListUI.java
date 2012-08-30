@@ -1,11 +1,11 @@
 package sanguo;
 
 import javax.microedition.lcdui.Font;
-import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 
 import cn.ohyeah.stb.ui.DrawUtil;
 import cn.ohyeah.stb.ui.ScrollBar;
+import cn.ohyeah.stb.game.SGraphics;
 import cn.ohyeah.stb.key.KeyCode;
 import cn.ohyeah.stb.key.KeyState;
 
@@ -216,7 +216,7 @@ public class GeneralListUI {
 		return list;
 	}
 	
-	public void show(Graphics g) {
+	public void show(SGraphics g) {
 		g.drawImage(listBg, bgX, bgY, 20);
 		
 		Font font = NewSanguoGameEngine.instance.getFont();

@@ -1,12 +1,12 @@
 package sanguo;
 
 import javax.microedition.lcdui.Font;
-import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 
 import cn.ohyeah.itvgame.model.GameAttainment;
 import cn.ohyeah.itvgame.model.GameRanking;
 import cn.ohyeah.stb.game.Configurations;
+import cn.ohyeah.stb.game.SGraphics;
 import cn.ohyeah.stb.game.ServiceWrapper;
 import cn.ohyeah.stb.ui.ISprite;
 import cn.ohyeah.stb.ui.DrawUtil;
@@ -267,7 +267,7 @@ public class StateMain {
 	private void showLoad() {
 		int sx, sy;
 		String ss = "正在加载资源， 请稍后......";
-		Graphics g = engine.getGraphics();
+		SGraphics g = engine.getSGraphics();
 		sx = (engine.getScreenWidth()-engine.getFont().stringWidth(ss))/2;
 		sy = (engine.getScreenHeight()-engine.getFont().getHeight())/2;
 		g.setClip(0, 0, engine.getScreenWidth(), engine.getScreenHeight());
@@ -284,7 +284,7 @@ public class StateMain {
 		choiceCursor = null;
 	}
 
-	public void show(Graphics g) {
+	public void show(SGraphics g) {
 		switch(state) {
 		case STATE_MENU:
 			showMenu(g);
@@ -303,7 +303,7 @@ public class StateMain {
 		}
 	}
 	
-	private void showRankBg(Graphics g) {
+	private void showRankBg(SGraphics g) {
 		Image title = Resource.loadImage(Resource.PIC_ID_RANK_TITLE);
 		Image item = Resource.loadImage(Resource.PIC_ID_RANK_ITEM);
 		Image foot = Resource.loadImage(Resource.PIC_ID_RANK_FOOT);
@@ -324,7 +324,7 @@ public class StateMain {
 		g.drawImage(foot, footX, footY, 20);
 	}
 	
-	private void showFetchRank(Graphics g) {
+	private void showFetchRank(SGraphics g) {
 		showRankBg(g);
 		String info = "正在读取排行榜，请稍后......";
 		PopupText pt = Resource.buildPopupTextWithoutBtn();
@@ -333,7 +333,7 @@ public class StateMain {
 		engine.flushGraphics();
 	}
 
-	private void showRank(Graphics g) {
+	private void showRank(SGraphics g) {
 		
 		Image title = Resource.loadImage(Resource.PIC_ID_RANK_TITLE);
 		Image item = Resource.loadImage(Resource.PIC_ID_RANK_ITEM);
@@ -415,7 +415,7 @@ public class StateMain {
 		
 	}
 
-	private void showMenu(Graphics g) {
+	private void showMenu(SGraphics g) {
 		Image bgImg = Resource.loadImage(Resource.PIC_ID_MAIN_BG);
 		g.drawImage(bgImg, 0, 0, 0);
 		if (mainMenu == null) {
@@ -435,7 +435,7 @@ public class StateMain {
 		}
 	}
 	
-	private void showStart(Graphics g) {
+	private void showStart(SGraphics g) {
 		switch (startState) {
 		case STATE_START_INTRO: 
 			break;
@@ -447,7 +447,7 @@ public class StateMain {
 		}
 	}
 	
-	private void showStartChoice(Graphics g) {
+	private void showStartChoice(SGraphics g) {
 		g.drawImage(Resource.loadImage(Resource.PIC_ID_CHOICE_BG), 0, 0, 0);
 		choiceCursor.show(g, Resource.POS_SEIGNEUR_CHOICE[choiceIndex][0], 
 				Resource.POS_SEIGNEUR_CHOICE[choiceIndex][1]);
