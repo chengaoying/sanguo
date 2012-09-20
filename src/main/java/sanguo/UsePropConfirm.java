@@ -123,7 +123,7 @@ public class UsePropConfirm {
 		ss = Integer.toString(engineService.getBalance());
 		sx = bgX+185+((88-font.stringWidth(ss))>>1);
 		sy = bgY+271+ydelta;
-		g.drawString(ss,sx, sy,	20);
+		//g.drawString(ss,sx, sy,	20);
 		
 		/*显示按钮*/
 		Image btnBg = Resource.loadImage(Resource.PIC_ID_CONFIRM_BTN_BG);
@@ -568,14 +568,15 @@ public class UsePropConfirm {
 		}
 		
 		if (canBuy) {
-			if (engineService.calcExpendAmount(prop.getPrice())>engineService.getBalance()) {
+			/*if (engineService.calcExpendAmount(prop.getPrice())>engineService.getBalance()) {
 				pt.setText("您的余额不足，请"+engineService.getRechargeCommand()+"后购买");
 				pt.popup();
 			}
-			else {
+			else {*/
 				try {
 					ServiceWrapper sw = engine.getServiceWrapper();
-					sw.purchaseProp(prop.getPropId(), 1, "购买道具"+prop.getName());
+					//sw.purchaseProp(prop.getPropId(), 1, "购买道具"+prop.getName());
+					sw.expend(prop.getPrice(), prop.getPropId(), "购买道具"+prop.getName());
 					int result = sw.getServiceResult();
 					if (result == 0) {
 						buyResult = true;
@@ -590,7 +591,7 @@ public class UsePropConfirm {
 					pt.setText("购买道具失败, 原因: "+e.getMessage());
 					pt.popup();
 				}
-			}
+			//}
 		}
 		return buyResult;
 	}

@@ -17,10 +17,10 @@ public class Prop {
 	private String intro;
 	private String icon;
 	
+	
 	public String getName() {
 		return name;
 	}
-	
 	public void setName(String name) {
 		this.name = name;
 	}

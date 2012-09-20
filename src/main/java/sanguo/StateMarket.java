@@ -207,7 +207,7 @@ public class StateMarket {
 				}
 				
 				if (canBuy) {
-					if (prop.getPrice()>engineService.getBalance()) {
+					/*if (prop.getPrice()>engineService.getBalance()) {
 						if (engineService.isSupportRecharge()) {
 							PopupConfirm confirm = Resource.buildPopupConfirm();
 							confirm.setText("您的"+engineService.getExpendAmountUnit()+"不足，请"
@@ -224,10 +224,11 @@ public class StateMarket {
 							pt.popup();
 						}
 					}
-					else {
+					else {*/
 						try {
 							ServiceWrapper sw = engine.getServiceWrapper();
-							sw.purchaseProp(prop.getPropId(), 1, remark);
+							//sw.purchaseProp(prop.getPropId(), 1, remark);
+							sw.expend(prop.getPrice(),prop.getPropId(), remark);
 							if (sw.isServiceSuccessful()) {
 								if (type == TYPE_GENERAL_MARKET) {
 									engine.addDepotGeneralProp(prop);
@@ -239,7 +240,7 @@ public class StateMarket {
 								}
 							}
 							else {
-								pt.setText(type == TYPE_GENERAL_MARKET?"聘用武将失败":"购买道具失败"+", 原因："+sw.getServiceMessage());
+								pt.setText(type == TYPE_GENERAL_MARKET?"聘用武将失败, 原因："+sw.getServiceMessage():"购买道具失败, 原因："+sw.getServiceMessage());
 								pt.popup();
 							}
 							
@@ -248,7 +249,7 @@ public class StateMarket {
 							pt.setText(type == TYPE_GENERAL_MARKET?("聘用武将失败, 原因: "+e.getMessage()):("购买道具失败, 原因: "+e.getMessage()));
 							pt.popup();
 						}
-					}
+					//}
 				}
 			}
 			else {
@@ -481,7 +482,7 @@ public class StateMarket {
 				((Resource.W_MARKET_AMOUNT_TEXT-font.stringWidth(amt))>>1);
 		int sy = bgY+Resource.Y_MARKET_AMOUNT_TEXT+((22-fontH)>>1);
 		g.setColor(0xFFFF00);
-		g.drawString(amt, sx, sy, 20);
+		//g.drawString(amt, sx, sy, 20);
 		
 		sx = bgX+Resource.X_MARKET_BTN+
 				((Resource.W_MARKET_BTN-btnW)>>1);
