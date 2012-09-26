@@ -330,7 +330,8 @@ public class StateRecord {
 				sx += 130;
 				
 				String recTime = record.getRecordTime();
-				recTime = recTime.substring(0, recTime.lastIndexOf(':'));
+				System.out.println("recTime:"+recTime);
+				//recTime = recTime.substring(0, recTime.lastIndexOf(':'));					
 				ss = "更新时间："+recTime;
 				g.drawString(ss, sx, sy, 20);
 				
