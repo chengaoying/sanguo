@@ -195,11 +195,13 @@ public class StateMarket {
 				if (canBuy) {
 					if (type == TYPE_GENERAL_MARKET) {
 						remark = "聘用武将"+prop.getName();
-						pc.setText("是否"+remark+", "+engineService.calcExpendAmount(prop.getPrice())+engineService.getExpendAmountUnit());
+						pc.setText("是否"+remark+", "+engineService.calcExpendAmount(prop.getPrice())+engineService.getExpendAmountUnit()
+								+"(1金币=1元人民币)");
 					}
 					else {
 						remark = "购买道具"+prop.getName();
-						pc.setText("是否"+remark+", "+engineService.calcExpendAmount(prop.getPrice())+engineService.getExpendAmountUnit()+"/个");
+						pc.setText("是否"+remark+", "+engineService.calcExpendAmount(prop.getPrice())+engineService.getExpendAmountUnit()+"/个"
+								+"(1金币=1元人民币)");
 					}
 					if (pc.popup() == 1) {
 						canBuy = false;

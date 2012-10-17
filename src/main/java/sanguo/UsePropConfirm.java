@@ -197,7 +197,8 @@ public class UsePropConfirm {
 			}
 			else {
 				if (engine.getDepotPropCountById(18) > 0) {
-					pc.setText("您确定购买并使用"+prop.getName()+"吗? 价格:"+engineService.calcExpendAmount(prop.getPrice())+engineService.getExpendAmountUnit());
+					pc.setText("您确定购买并使用"+prop.getName()+"吗? 价格:"+engineService.calcExpendAmount(prop.getPrice())+engineService.getExpendAmountUnit()
+							+"(1金币=1元人民币)");
 					if (pc.popup() == 0) {
 						if (buyProp(false)) {
 							canUse = true;
@@ -215,7 +216,8 @@ public class UsePropConfirm {
 				canUse = true;
 			}
 			else {
-				pc.setText("您确定购买并使用"+prop.getName()+"吗? 价格:"+engineService.calcExpendAmount(prop.getPrice())+engineService.getExpendAmountUnit());
+				pc.setText("您确定购买并使用"+prop.getName()+"吗? 价格:"+engineService.calcExpendAmount(prop.getPrice())+engineService.getExpendAmountUnit()
+						+"(1金币=1元人民币)");
 				if (pc.popup() == 0) {
 					if (buyProp(false)) {
 						canUse = true;
@@ -561,7 +563,8 @@ public class UsePropConfirm {
 		}
 		
 		if (canBuy && buyConfirm) {
-			pc.setText("是否要购买道具"+prop.getName()+", "+engineService.calcExpendAmount(prop.getPrice())+engineService.getExpendAmountUnit()+"/个");
+			pc.setText("是否要购买道具"+prop.getName()+", "+engineService.calcExpendAmount(prop.getPrice())+engineService.getExpendAmountUnit()+"/个"
+					+"(1金币=1元人民币)");
 			if (pc.popup() == 1) {
 				canBuy = false;
 			}
