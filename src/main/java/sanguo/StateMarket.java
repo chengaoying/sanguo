@@ -4,6 +4,7 @@ import javax.microedition.lcdui.Font;
 import javax.microedition.lcdui.Image;
 
 import cn.ohyeah.stb.game.EngineService;
+import cn.ohyeah.stb.game.Recharge;
 import cn.ohyeah.stb.game.SGraphics;
 import cn.ohyeah.stb.game.ServiceWrapper;
 import cn.ohyeah.stb.game.StateRecharge;
@@ -254,7 +255,8 @@ public class StateMarket {
 			else {
 				if (curConfirmIndex == 0) {
 					if (engineService.isSupportRecharge()) {
-						StateRecharge recharge = new StateRecharge(engine);
+						//StateRecharge recharge = new StateRecharge(engine);
+						Recharge recharge = new Recharge(engine);
 						recharge.recharge();
 						engine.stateMap.showCommonMapBgInfo(engine.getSGraphics());
 						engine.stateMap.clearCommonMapBgRes();
