@@ -4,6 +4,7 @@ import javax.microedition.lcdui.Font;
 import javax.microedition.lcdui.Image;
 
 import cn.ohyeah.stb.game.EngineService;
+import cn.ohyeah.stb.game.Recharge;
 import cn.ohyeah.stb.game.SGraphics;
 import cn.ohyeah.stb.game.ServiceWrapper;
 import cn.ohyeah.stb.game.StateRecharge;
@@ -641,7 +642,7 @@ public class UsePropConfirm {
 				}
 				else if (btnIndex == 2) {
 					if (engineService.isSupportRecharge()) {
-						StateRecharge recharge = new StateRecharge(engine);
+						Recharge recharge = new Recharge(engine);
 						recharge.recharge();
 						needPaintPreBg = true;
 					}

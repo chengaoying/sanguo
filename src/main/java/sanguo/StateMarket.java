@@ -214,7 +214,7 @@ public class StateMarket {
 							confirm.setText("ÄúµÄ"+engineService.getExpendAmountUnit()+"²»×ã£¬Çë"
 									+engineService.getRechargeCommand()+"ºó¹ºÂò");
 							if (confirm.popup() == 0) {
-								StateRecharge recharge = new StateRecharge(engine);
+								Recharge recharge = new Recharge(engine);
 								recharge.recharge();
 								engine.stateMap.showCommonMapBgInfo(engine.getSGraphics());
 								engine.stateMap.clearCommonMapBgRes();
