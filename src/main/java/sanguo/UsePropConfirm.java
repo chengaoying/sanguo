@@ -569,14 +569,15 @@ public class UsePropConfirm {
 		}
 		
 		if (canBuy) {
-			if (engineService.calcExpendAmount(prop.getPrice())>engineService.getBalance()) {
+			/*if (engineService.calcExpendAmount(prop.getPrice())>engineService.getBalance()) {
 				pt.setText("您的余额不足，请"+engineService.getRechargeCommand()+"后购买");
 				pt.popup();
 			}
-			else {
+			else {*/
 				try {
 					ServiceWrapper sw = engine.getServiceWrapper();
-					sw.purchaseProp(prop.getPropId(), 1, "购买道具"+prop.getName());
+					//sw.purchaseProp(prop.getPropId(), 1, "购买道具"+prop.getName());
+					sw.expendTelcomsh(prop.getPropId(), "购买道具"+prop.getName());
 					int result = sw.getServiceResult();
 					if (result == 0) {
 						buyResult = true;
@@ -591,7 +592,7 @@ public class UsePropConfirm {
 					pt.setText("购买道具失败, 原因: "+e.getMessage());
 					pt.popup();
 				}
-			}
+			//}
 		}
 		return buyResult;
 	}

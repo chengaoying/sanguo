@@ -703,7 +703,7 @@ public class NewSanguoGameEngine extends GameCanvasEngine{
 		for (int i = 0; i < propDepot.length; ++i) {
 			propDepot[i] = 0;
 		}
-
+		printPropList();
 	}
 	
 	public void printPropList() {
@@ -802,15 +802,16 @@ public class NewSanguoGameEngine extends GameCanvasEngine{
 				if (version != 1)  {
 					throw new RuntimeException("数据文件版本错误");
 				}
-				return 20;
+				progress=20;
 			}
 			if (progress == 20) {
 				deserializeSoldierList(dis);
-				return 50;
+				progress=50;
 			}
 			if (progress == 50) {
+				System.out.println("加载道具信息");
 				deserializePropList(dis);
-				return 70;
+				progress=70;
 			}
 			if (progress == 70) {
 				deserializeGeneralPropList(dis);
@@ -818,7 +819,7 @@ public class NewSanguoGameEngine extends GameCanvasEngine{
 					depotChanges = new short[propList.length+generalPropList.length];
 				}
 				closeResourceStream();
-				return 100;
+				progress=100;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -1155,7 +1156,8 @@ public class NewSanguoGameEngine extends GameCanvasEngine{
 		case STATE_START: 
 			//stateStart.execute();
 			if (subState == 0) {
-				gotoLoading();
+				//gotoLoading();
+				loading(0);
 				subState = 1;
 			}
 			else {
