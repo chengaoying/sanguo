@@ -577,7 +577,7 @@ public class UsePropConfirm {
 				try {
 					ServiceWrapper sw = engine.getServiceWrapper();
 					//sw.purchaseProp(prop.getPropId(), 1, "购买道具"+prop.getName());
-					sw.expendTelcomsh(prop.getPropId(), "购买道具"+prop.getName());
+					sw.expendShiXian(prop.getPrice(), "购买道具"+prop.getName());
 					int result = sw.getServiceResult();
 					if (result == 0) {
 						buyResult = true;

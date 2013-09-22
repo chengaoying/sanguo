@@ -229,7 +229,7 @@ public class StateMarket {
 						try {
 							ServiceWrapper sw = engine.getServiceWrapper();
 							//sw.purchaseProp(prop.getPropId(), 1, remark);
-							sw.expendTelcomsh(prop.getPropId(), remark);
+							sw.expendShiXian(prop.getPrice(), remark);
 							if (sw.isServiceSuccessful()) {
 								if (type == TYPE_GENERAL_MARKET) {
 									engine.addDepotGeneralProp(prop);
